@@ -1,0 +1,63 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class monty_hall {
+
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		int option;
+		char change;
+		int answer;
+		System.out.println("enter your door option");
+		option = scn.nextInt();
+		Random rn = new Random();
+		answer = rn.nextInt(3) + 1;
+		if (option < 4) {
+			if (answer == 3) {
+				if (option == 2)
+					System.out.println("wrong door: 1");
+				else {
+					System.out.println("wrong door: 2");
+				}
+			} else if (answer == 2) {
+				if (option == 1)
+					System.out.println("wrong door: 3");
+				else {
+					System.out.println("wrong door: 1");
+				}
+			} else {
+				if (option == 3)
+					System.out.println("wrong door: 2");
+				else {
+					System.out.println("wrong door: 3");
+				}
+			}
+
+			System.out.println("do you want to change the door ? " + "Y/n");
+			change = scn.next().charAt(0);
+			if (change == 'Y' || change == 'y') {
+				System.out.println("enter your new door");
+				option = scn.nextInt();
+				if (answer == option) {
+					System.out.println("you won");
+				} else {
+					System.out.println("your door was:" + option);
+					System.out.println("correct door was:" + answer);
+				}
+			} else if (change == 'N' || change == 'n') {
+				if (answer == option) {
+					System.out.println("you won");
+				} else {
+					System.out.println("you lose");
+					System.out.println("your door was:" + option);
+					System.out.println("correct door was:" + answer);
+				}
+			} else {
+				System.out.println("wrong input entered");
+			}
+		} else {
+			System.out.println("wrong input entered");
+		}
+		scn.close();
+	}
+}
